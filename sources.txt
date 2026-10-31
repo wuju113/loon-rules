@@ -14,3 +14,4 @@ rules/Google.lsr|https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/
 rules/ChinaMax.lsr|https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/ChinaMax/ChinaMax.list
 plugins/Sub-Store.plugin|https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Loon.plugin
 plugins/YouTube.lpx|https://raw.githubusercontent.com/devchristian1337/loon-plugins/refs/heads/main/Plugins/YouTube.lpx
+rules/Direct.lsr|https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Direct/Direct.list
