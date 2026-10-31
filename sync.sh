@@ -18,6 +18,9 @@ grep -v '^#' sources.txt | while IFS='|' read -r path url domurl; do
     fi
     # Loon iOS 不支持 PROCESS-NAME，去掉
     sed -i '/^PROCESS-NAME,/d' tmp.dl
+    # 本仓库自定义补充：extras/<同名>.list 追加到末尾
+    extra="extras/$(basename "$path" .lsr).list"
+    if [ -f "$extra" ]; then printf '\n# ---- merged from %s ----\n' "$extra" >> tmp.dl; grep -v '^#' "$extra" >> tmp.dl; fi
     mv tmp.dl "$path"; rm -f tmp.dom; echo "OK  $path"
   else
     rm -f tmp.dl; echo "KEEP $path (上游失败，保留旧版)"

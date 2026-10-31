@@ -1,0 +1,14 @@
+# 自定义直连补充（同步时追加到 rules/Direct.lsr）
+# 朴朴超市（App / 微信小程序）
+DOMAIN-SUFFIX,pupuapi.com
+DOMAIN-SUFFIX,pupumall.com
+DOMAIN-SUFFIX,pupumall.net
+DOMAIN-SUFFIX,pupufz.com
+DOMAIN-SUFFIX,pupugo.com
+DOMAIN-SUFFIX,pupu168.com
+DOMAIN-SUFFIX,pupuwang.com
+DOMAIN-SUFFIX,pupurazzi.com
+IP-CIDR,54.222.159.138/32,no-resolve
+IP-CIDR,101.42.130.147/32,no-resolve
+IP-CIDR,106.55.220.18/32,no-resolve
+IP-CIDR,139.196.12.179/32,no-resolve
