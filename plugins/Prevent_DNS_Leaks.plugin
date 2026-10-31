@@ -1,0 +1,17 @@
+#!name = DNS防泄露
+#!desc = 追加加密DNS、关闭IPv6、屏蔽常见HTTPDNS。需在主配置[General]删除dns-server里的system，并加入 hijack-dns = *:53
+#!author = Hark
+#!system = iOS,iPadOS
+
+[General]
+doh-server = https://dns.alidns.com/dns-query,https://doh.pub/dns-query
+ipv6-vif = off
+
+[Rule]
+DOMAIN,httpdns.alicdn.com,REJECT
+DOMAIN,httpdns-api.aliyuncs.com,REJECT
+DOMAIN,httpdns.n.netease.com,REJECT
+DOMAIN,dns.weixin.qq.com,REJECT
+DOMAIN-SUFFIX,httpdns.pro,REJECT
+DOMAIN,httpdns.baidubce.com,REJECT
+IP-CIDR,203.107.1.0/24,REJECT,no-resolve
