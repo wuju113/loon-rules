@@ -1,12 +1,16 @@
 #!name = Reddit去广告
-#!desc = 移除信息流和评论区的推广帖，需信任 MITM 证书。规则来自 xream。
-#!author = xream, Hark
+#!desc = 移除信息流、帖子页和评论区的推广帖，需开启 MITM 并信任证书。2026-11-06 更新：清空 Ads 类请求（评论区广告），补顶层 AdPost。规则源自 xream、墨鱼。
+#!author = xream, ddgksf2013, Hark
 #!icon = https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Reddit.png
 #!system = iOS,iPadOS
 #!tag = 去广告
+#!date = 2026-11-06
 
 [Rewrite]
-^https?:\/\/gql(-fed)?\.reddit\.com response-body-json-jq 'walk(if type == "object" then (if (.commentsPageAds | type == "array") then (.commentsPageAds = []) else . end) | (if ((.node | type == "object") and (.node.cells | type == "array") and (.node.cells | any(.__typename? == "AdMetadataCell" or .isAdPost? == true))) then empty else . end) | (if (.node | type == "object") and (.node.adPayload | type == "object") then empty else . end) | (if (.node | type == "object") and (.node.__typename? == "AdPost") then empty else . end) else . end)'
+# 评论区/帖子页广告走单独的 *Ads GraphQL 请求，直接返回空对象
+response if ${url} ~= /^https?:\/\/gql(?:-fed)?\.reddit\.com(?:\/|$)/i && ${response.status} == 200 && ${request.header['X-APOLLO-OPERATION-NAME']} ~= /Ads/i then response.json.jq(`if type == "object" or type == "array" then {} else error("keep") end`)
+# 信息流与帖子内嵌广告
+^https?:\/\/gql(-fed)?\.reddit\.com response-body-json-jq 'walk(if type == "object" then (if (.commentsPageAds | type == "array") then (.commentsPageAds = []) else . end) | (if ((.node | type == "object") and (.node.cells | type == "array") and (.node.cells | any(.__typename? == "AdMetadataCell" or .isAdPost? == true))) then empty else . end) | (if (.node | type == "object") and (.node.adPayload | type == "object") then empty else . end) | (if (.node | type == "object") and (.node.__typename? == "AdPost") then empty else . end) | (if .__typename? == "AdPost" then empty else . end) else . end)'
 
 [Mitm]
 hostname = gql.reddit.com, gql-fed.reddit.com
