@@ -2,3 +2,8 @@
 DOMAIN-SUFFIX,bnbzh.ac
 DOMAIN-SUFFIX,saasexch.com
 DOMAIN-SUFFIX,saasexch.cc
+
+# OKX 漏网域名（设备风控/CDN/钱包）2026-11-08
+DOMAIN,cloudauth-device.cn-hongkong.aliyuncs.com
+DOMAIN,d1w1p0smpsoh5j.cloudfront.net
+DOMAIN-SUFFIX,walletconnect.com
