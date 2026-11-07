@@ -207,3 +207,8 @@ DOMAIN-KEYWORD,binance
 DOMAIN-KEYWORD,huobi
 DOMAIN-KEYWORD,metamask
 DOMAIN-KEYWORD,okx
+
+# ---- merged from extras/Crypto.list ----
+DOMAIN-SUFFIX,bnbzh.ac
+DOMAIN-SUFFIX,saasexch.com
+DOMAIN-SUFFIX,saasexch.cc
