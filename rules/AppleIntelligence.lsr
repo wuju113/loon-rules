@@ -1,0 +1,12 @@
+# Apple Intelligence / Siri 分流（Loon 规则集）
+# 在 Loon「远程规则」里排在 Apple.lsr 之前，策略选 AI（美国节点）
+# 来源：support.apple.com/101555 及社区规则集，2026-11-11
+DOMAIN-SUFFIX,guzzoni.apple.com
+DOMAIN-SUFFIX,smoot.apple.com
+DOMAIN-SUFFIX,apple-relay.apple.com
+DOMAIN-SUFFIX,apple-relay.cloudflare.com
+DOMAIN-SUFFIX,apple-relay.fastly-edge.com
+DOMAIN-SUFFIX,apple-relay.akamaized.net
+DOMAIN-SUFFIX,apple-relay.mask.apple-dns.net
+DOMAIN,cp4.cloudflare.com
+DOMAIN-SUFFIX,gateway.icloud.com
